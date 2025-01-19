@@ -61,18 +61,32 @@ function Hero() {
   const textSectionStyle = {
     textAlign: "left",
     maxWidth: "600px",
+    color: "red",
+
   };
 
   const headingStyle = {
     fontSize: "3rem",
     fontWeight: "800",
     lineHeight: "1.2",
-    color: "#2d3748",
+ 
     marginBottom: "1.5rem",
-    background: "linear-gradient(45deg, #f25f5c, #ff7f50)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    position: "relative",
+  
+
+
+
+
+    lineHeight: "1.8",
+    color: "#4a5568",
+
+
+
+
+
+
+
+
+
   };
 
   const underlineStyle = {
@@ -90,16 +104,7 @@ function Hero() {
     borderRadius: "2px",
   };
 
-  const unknownAlphaStyle = {
-    position: "absolute",
-    bottom: "-20px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    fontSize: "1rem",
-    fontWeight: "600",
-    color: "#f25f5c",
-    animation: "slide 5s infinite linear",
-  };
+
 
   const spanStyle = {
     color: "#f25f5c", // Define the spanStyle object
@@ -206,7 +211,7 @@ function Hero() {
                 Elevate Your Style with <br />
                 <span style={spanStyle}>Timeless </span> Elegance.
                 <div style={pinkLineStyle}></div>
-                <div style={unknownAlphaStyle}>Unknown Alpha</div>
+              
               </div>
             </h1>
             <p style={paragraphStyle}>
