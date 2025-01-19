@@ -73,10 +73,6 @@ function Hero() {
     marginBottom: "1.5rem",
   
 
-
-
-
-    lineHeight: "1.8",
     color: "#4a5568",
 
 
