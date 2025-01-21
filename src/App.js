@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import Routes and Route
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; // Import Routes and Route
 import { CartProvider } from "./components/CartContext"; // Import CartProvider
 import CheckoutPage from "./components/CheckoutPage"; // Import CheckoutPage
 import CartModal from "./components/CartModal"; // Import CartModal
