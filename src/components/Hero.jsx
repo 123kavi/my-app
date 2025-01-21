@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes, createGlobalStyle } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag, faTags, faTimes } from "@fortawesome/free-solid-svg-icons";
+
 // Animations
 const floatAnimation = keyframes`
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
 `;
 
@@ -38,13 +39,14 @@ const fadeIn = keyframes`
 // Global Style
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #FBF8F2;  // Green background color
+    background-color: #FBF8F2;  // Background color
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;  // Default text color
   }
 `;
+
 function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentSmallImageIndex, setCurrentSmallImageIndex] = useState(0);
@@ -80,11 +82,11 @@ function Hero() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
   return (
     <>
-      <GlobalStyle />  {/* Apply global styles */}
+      <GlobalStyle /> {/* Apply global styles */}
       <RedisShadowBox>
-  
         {/* Gradient Background */}
         <GradientBackground />
 
@@ -147,34 +149,34 @@ function Hero() {
             </PopupContent>
           </PopupModal>
         )}
-     
       </RedisShadowBox>
     </>
   );
 }
 
-
 export default Hero;
+
+// Styled Components
+
 const RedisShadowBox = styled.div`
-  padding: 4rem 3rem;  // Increased padding on all sides for more space
+  padding: 1rem 3rem;  // Padding for more space around content
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;  // Reduced height
+  min-height: 50vh;  // Height adjusted for better space usage
   position: relative;
   overflow: hidden;
-  
-  border-radius: 10px;  // Rounded corners for a smoother box appearance
+  border-radius: 20px;  // Rounded corners for modern design
   z-index: 2;
-  margin: 1rem;  // Adds margin around the entire box for additional space
+    margin-bottom: 2rem;
 `;
 
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;  // Reduced gap between columns
-  max-width: 1000px;  // Reduced max width
+  gap: 2rem;  // Increased gap for better spacing between elements
+  max-width: 1200px;  // Wider content area
   width: 100%;
   justify-items: center;
   position: relative;
@@ -182,16 +184,13 @@ const ContentWrapper = styled.div`
   animation: ${fadeIn} 1.5s ease-in-out;
 `;
 
-
-
 const GradientBackground = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
- background-color: rgba(246, 236, 243, 0.9);  // 90% opacity (slightly transparent)
-5.00%, 92.20%);
+  background-color: rgba(246, 236, 243, 0.9);  // Slight transparency with gradient animation
   background-size: 400% 400%;
   animation: ${gradientAnimation} 10s ease infinite;
   z-index: -1;
@@ -203,7 +202,7 @@ const SaleBadge = styled.div`
   right: 20px;
   background-color: #ff6f61;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
@@ -215,24 +214,23 @@ const SaleBadge = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  // Added shadow to SaleBadge
 `;
 
-
-
 const TextSection = styled.div`
   text-align: left;
   max-width: 600px;
   color: #fff;
+      margin-top: 2rem;
 `;
 
 const Heading = styled.h1`
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 2.5rem;  // Smaller font size for better balance
+  font-weight: 700;
+  line-height: 1.3;
   margin-bottom: 1.5rem;
   color: #000;
   animation: ${fadeIn} 1s ease-in-out;
-
+  
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;  // Smaller font size for mobile view
   }
 `;
 
@@ -261,7 +259,7 @@ const Highlight = styled.span`
 `;
 
 const Paragraph = styled.p`
-  font-size: 1.25rem;
+  font-size: 1rem;  // Adjusted font size
   line-height: 1.8;
   color: #333;
   margin-bottom: 2rem;
@@ -301,7 +299,7 @@ const MainImage = styled.div`
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  animation: ${floatAnimation} 4s infinite ease-in-out;
+  animation: ${floatAnimation} 2s infinite ease-in-out;
 
   img {
     width: 100%;
@@ -387,3 +385,4 @@ const PopupButton = styled.button`
     background-color: #ff4a3d;
   }
 `;
+

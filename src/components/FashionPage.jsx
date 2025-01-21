@@ -1,16 +1,21 @@
 import React from "react";
-
+import { useCart } from "./CartContext"; // Import the custom hook
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for react-toastify
 const FashionPage = () => {
+  const { addToCart } = useCart(); // Get addToCart function from context
   const imageURL =
     "https://assets.theplace.com/image/upload/t_pdp_img_m,f_auto,q_auto/v1/ecom/assets/products/tcp/3050085/3050085_32I8.png";
-
+   
+    const imageURL1 = "https://m.media-amazon.com/images/I/71zT0tJ2CjL._SX679_.jpg";
   // Sample data for carousel items
   const carouselItems = [
     { id: 1, name: "Item 1", price: "$49.99", image: imageURL },
     { id: 2, name: "Item 2", price: "$59.99", image: imageURL },
     { id: 3, name: "Item 3", price: "$39.99", image: imageURL },
-    { id: 4, name: "Item 4", price: "$69.99", image: imageURL },
+    { id: 4, name: "Item 4", price: "$69.99", image: imageURL1 },
   ];
+
 
   // Sample data for features
   const features = [
@@ -65,36 +70,47 @@ const FashionPage = () => {
                 designed for impact—our pieces make you shine.
               </p>
               <button
-              style={styles.buyNowButton}
-              onMouseEnter={(e) =>
-                (e.target.style.backgroundColor = styles.backgroundColor)
-              }
-              onMouseLeave={(e) => (e.target.style.backgroundColor = "#8686F7")}
-            >
-              Buy Now
-            </button>
+  style={styles.buyNowButton}
+  onClick={() => {
+    const productsSection = document.getElementById("products");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+>
+  Buy Now
+</button>
+
             </div>
             
           </div>
         </div>
       </div>
+      <h3 id="products" style={styles.additionalHeading}>Products</h3>
 
-      <h2 style={styles.additionalHeading}>Products</h2>
-      <div style={styles.reviewsWrapper}>
-        {carouselItems.map(item => (
-          <div style={styles.review1Card} key={item.id}>
-            <img
-              src={item.image}
-              alt={item.name}
-              style={styles.cardImage}
-            />
+    <div style={styles.reviewsWrapper}>
+        {carouselItems.map((item) => (
+          <div style={styles.featureCard1} key={item.id}>
+            <img src={item.image} alt={item.name} style={styles.cardImage} />
             <p style={styles.itemPrice}>{item.price}</p>
             <div style={styles.buttonGroup}>
-              <button style={styles.shopNowButton}>Shop Now &rarr;</button>
+              <button
+                style={styles.shopNowButton}
+                onClick={() => {
+                  addToCart(item);
+                  toast.success(`${item.name} added to your cart successfully!`, {
+                    position: "top-right",
+                    autoClose: 3000,
+                  });
+                }}
+              >
+                Shop Now &rarr;
+              </button>
             </div>
           </div>
         ))}
       </div>
+      <ToastContainer />
 
       {/* Additional Content to Fill the Page */}
       <div style={styles.additionalContent}>
@@ -108,16 +124,7 @@ const FashionPage = () => {
           ))}
         </div>
 
-        <h2 style={styles.additionalHeading}>Customer Reviews</h2>
-        <div style={styles.reviewsWrapper}>
-          {reviews.map((review, index) => (
-            <div style={styles.reviewCard} key={index}>
-              <h3>{review.name}</h3>
-              <p>"{review.text}"</p>
-              <p style={styles.reviewRating}>Rating: {review.rating}</p>
-            </div>
-          ))}
-        </div>
+   
       </div>
     </div>
   );
@@ -131,7 +138,7 @@ const styles = {
   },
 
   additionalHeading: {
-    fontSize: "2.5rem",
+    fontSize: "2rem",
     fontWeight: "800",
     color: "#2d3748",
     marginBottom: "2rem",
@@ -143,6 +150,8 @@ const styles = {
     gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
     gap: "2rem",
     maxWidth: "1200px",
+ 
+    marginBottom: "2rem",
     margin: "0 auto",
   },
 
@@ -182,12 +191,20 @@ const styles = {
 
   featureCard: {
     backgroundColor: "#fff",
-    padding: "2rem",
-    borderRadius: "20px",
-    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
-    textAlign: "center",
+    padding: "1.5rem",
+    borderRadius: "15px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    textAlign: "left",    marginBottom: "2rem",
+    border: "1px solid black", // Add a border with color and thickness
   },
-
+  featureCard1: {
+    backgroundColor: "#fff",
+    padding: "1.5rem",
+    borderRadius: "15px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    textAlign: "left",
+    border: "1px solid  rgba(247, 134, 238, 0.3)", // Add a border with color and thickness
+  },
   fashionSection: {
     marginBottom: "4rem",
   },
@@ -250,13 +267,26 @@ const styles = {
     borderRadius: "15px",
     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
     textAlign: "left",
+    border: "1px solid black", // Black border with 2px thickness
   },
+  
 
   reviewRating: {
     marginTop: "1rem",
     fontWeight: "600",
     color: "#ff6b6b",
   },
+  // Add CSS for animation
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(10px)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    }
+  }
 };
 
 export default FashionPage;
