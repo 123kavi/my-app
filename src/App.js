@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { CartProvider } from "./components/CartContext"; // Import CartProvider
 import CheckoutPage from "./components/CheckoutPage"; // Import CheckoutPage
 import CartModal from "./components/CartModal"; // Import CartModal
@@ -28,9 +28,6 @@ const App = () => {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/contact" element={<Contacts />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/reviews1" element={<Layout section="reviews1" />} />
-            <Route path="/service1" element={<Layout section="service1" />} />
-            {/* Add other routes if necessary */}
           </Routes>
         </div>
       </Router>

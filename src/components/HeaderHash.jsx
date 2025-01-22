@@ -45,12 +45,7 @@ const Header = ({ cartCount, onNavigate }) => {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li>
-            <Link to="#service1">Service</Link>
-            </li>
-            <li>
-            <Link to="#reviews1">Shop</Link>
-            </li>
+           
             <li>
               <Link to="/contact">Contact</Link>
             </li>
@@ -90,17 +85,8 @@ const Header = ({ cartCount, onNavigate }) => {
               About
             </Link>
           </li>
-          <li>
-            <Link to="#service1" onClick={toggleSidebar}>
-              Services
-            </Link>
-          </li>
-          <li>
-            {/* Shop link in the sidebar */}
-            <a href="#reviews1" onClick={toggleSidebar}>
-              Shop
-            </a>
-          </li>
+      
+     
           <li>
             <Link to="/contact" onClick={toggleSidebar}>
               Contact

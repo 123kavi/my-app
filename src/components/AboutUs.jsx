@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHeart, FaShoppingBag, FaRecycle } from 'react-icons/fa';
-import Header from "./Header";
+import HeaderHash from "./HeaderHash";
 
 const AboutUs = () => {
   // Inline styles
@@ -118,7 +118,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <Header />
+      <HeaderHash />
       <div style={styles.container}>
         <section style={styles.hero}>
           <div style={styles.heroContent}>

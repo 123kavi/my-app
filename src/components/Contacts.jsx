@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "./Header";
+import HeaderHash from "./HeaderHash";
 const ContactUs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -13,7 +13,7 @@ const ContactUs = () => {
 
   return (
     <>
-    <Header/>
+    <HeaderHash/>
       <div className="contact-us">
         <div className="contact-content">
           {/* Left Section: Contact Information */}

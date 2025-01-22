@@ -1,35 +1,32 @@
 import React, { useEffect, useRef } from "react";
-import Header from "./Header";  // Header Component
-import Hero from "./Hero";      // Hero Section Component
-import FashionPage from "./FashionPage"; // FashionPage Component
-import ContactUs from "./ContactUs";     // ContactUs Component
+import { useLocation } from "react-router-dom";
+import Header from "./Header";
+import Hero from "./Hero";
+import FashionPage from "./FashionPage";
+import ContactUs from "./ContactUs";
 
-const Layout = ({ section }) => {
-  // Create refs for the sections
-  const reviews1Ref = useRef(null);
+const Layout = () => {
   const service1Ref = useRef(null);
 
-  // Scroll to the appropriate section based on the URL (using section prop)
+  const location = useLocation();
+
+  // Scroll to the appropriate section when the URL hash changes
   useEffect(() => {
-    if (section === "reviews1" && reviews1Ref.current) {
-      reviews1Ref.current.scrollIntoView({ behavior: "smooth" });
-    } else if (section === "service1" && service1Ref.current) {
+    const hash = location.hash; // Get the current hash from the URL
+    if (hash === "#service1" && service1Ref.current) {
       service1Ref.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [section]);
+  }, [location]); // Run this effect when the URL hash changes
 
   return (
     <div>
-      {/* Header with navigation functionality */}
-      <Header />
+      <Header cartCount={0} />
 
-      {/* Main content */}
       <Hero />
 
-      {/* FashionPage with refs for reviews and service */}
-      <FashionPage reviews1Ref={reviews1Ref} service1Ref={service1Ref} />
+      {/* Fashion Page with a ref for the service1 section */}
+      <FashionPage service1Ref={service1Ref} />
 
-      {/* ContactUs section */}
       <ContactUs />
     </div>
   );

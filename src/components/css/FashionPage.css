@@ -1,0 +1,42 @@
+.fashion-page {
+    padding: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .reviews-section,
+  .service-section,
+  .fashion-info {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reviews-section h2,
+  .service-section h2,
+  .fashion-info h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .reviews-section p,
+  .service-section p,
+  .fashion-info p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  @media (max-width: 768px) {
+    .fashion-page {
+      padding: 20px;
+    }
+  
+    .reviews-section,
+    .service-section,
+    .fashion-info {
+      padding: 15px;
+    }
+  }
+  

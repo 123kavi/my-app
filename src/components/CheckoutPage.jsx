@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "./CartContext"; // Use the custom hook to access cart items
-import Header from "./Header";
+import HeaderHash from "./HeaderHash";
 import Swal from "sweetalert2"; // Import SweetAlert2
 
 const CheckoutPage = () => {
@@ -49,7 +49,7 @@ const CheckoutPage = () => {
 
   return (
     <div>
-      <Header />
+      <HeaderHash />
       <div
         style={{
           fontFamily: "Arial, sans-serif",
