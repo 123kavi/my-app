@@ -6,7 +6,7 @@ const CartContext = createContext();
 // Cart Provider Component
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null); // New state to store the selected item for checkout
+  const [selectedItem, setSelectedItem] = useState(null); // New state to store selected item
 
   // Function to add an item to the cart
   const addToCart = (item) => {
@@ -14,22 +14,22 @@ export const CartProvider = ({ children }) => {
   };
 
   // Function to update item quantity
-  const updateCartItemQuantity = (itemId, newQuantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === itemId ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
+// Function to update item quantity
+const updateCartItemQuantity = (itemId, newQuantity) => {
+  setCartItems((prevItems) =>
+    prevItems.map((item) =>
+      item.id === itemId ? { ...item, quantity: newQuantity } : item
+    )
+  );
+};
+
+const removeItem = (itemId) => {
+  setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+};
 
   // Function to set the selected item for checkout
   const setSelectedItemForCheckout = (item) => {
     setSelectedItem(item);
-  };
-
-  // Function to calculate the total price of the cart
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   return (
@@ -37,10 +37,10 @@ export const CartProvider = ({ children }) => {
       value={{
         cartItems,
         addToCart,
+        removeItem,
         updateCartItemQuantity,
-        setSelectedItemForCheckout, // Make sure this function is provided here
         selectedItem,
-        calculateTotal,
+        setSelectedItemForCheckout,
       }}
     >
       {children}

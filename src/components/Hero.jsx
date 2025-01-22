@@ -94,7 +94,7 @@ function Hero() {
         <SaleBadge>
           <FontAwesomeIcon icon={faTags} /> 50% Off!
         </SaleBadge>
-
+<br></br>
         {/* Content Wrapper for Text and Image Section */}
         <ContentWrapper>
           {/* Text Section */}
@@ -210,6 +210,7 @@ const SaleBadge = styled.div`
   align-items: center;
   gap: 10px;
   z-index: 3;
+  
   animation: ${fadeIn} 1s ease-in-out;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);  // Added shadow to SaleBadge
 `;

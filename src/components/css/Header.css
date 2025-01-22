@@ -11,7 +11,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #faf8fb;
+  background-color: #ede5f0;
   color: white;
   position: sticky;
   top: 0;
@@ -183,7 +183,7 @@ body {
 @media (min-width: 768px) {
   .header {
     padding: 20px 20px;
-    height: 30px; /* Taller header for desktop view */
+    height: 80px; /* Increase header height for desktop */
   }
 
   .desktop-nav {

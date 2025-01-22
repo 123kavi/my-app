@@ -3,7 +3,9 @@ import React from "react";
 const ContactUs = () => {
   return (
     <>
+  
       <div className="contact-us">
+        
         <div className="contact-content">
           {/* Left Section: Contact Information */}
           <div className="contact-info">

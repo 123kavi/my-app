@@ -1,40 +1,64 @@
 import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";  // Import Link
-import "./Header.css";
+import { Link } from "react-router-dom"; // Import Link
+import "./css/Header.css";
 import Cart from "./Cart";
+import logoImage from "./FD-PROJECT.png"; // Adjust the path according to your folder structure
 
-const Header = ({ cartCount }) => {
+const Header = ({ cartCount, onNavigate }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleShopClick = (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    if (onNavigate) {
+      onNavigate("reviews"); // Navigate to the reviews section
+    }
+    setIsSidebarOpen(false); // Close the sidebar
+  };
+
+
+  const handleServiceClick = (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    if (onNavigate) {
+      onNavigate("services"); // Navigate to the reviews section
+    }
+    setIsSidebarOpen(false); // Close the sidebar
+  };
+
   return (
     <div>
       {/* Header */}
       <header className="header">
-        {/* Logo */}
-        <div className="logo">ShopNow</div>
-      
+      <div className="logo">
+          <img src={logoImage} alt="ShopNow" style={{ width: 'auto', height: '40px' }} />
+        </div>
         {/* Desktop navigation */}
         <nav className="desktop-nav">
           <ul>
             <li>
-              <Link to="#home">Home</Link> {/* Change to Link */}
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link> {/* Update to use Link */}
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="#services">Services</Link>
+                {/* Shop link with onClick for navigation */}
+                <a href="/service1" >
+                Service
+              </a>
             </li>
             <li>
-              <Link to="#shop">Shop</Link>
+              {/* Shop link with onClick for navigation */}
+              <a href="/reviews1">
+                Shop
+              </a>
             </li>
             <li>
-              <Link to="#contact">Contact</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </nav>
@@ -48,22 +72,22 @@ const Header = ({ cartCount }) => {
           </div>
 
           {/* Hamburger Menu Icon */}
-          <button className="hamburger" onClick={toggleSidebar}>
+          <span className="hamburger" onClick={toggleSidebar}>
             &#9776;
-          </button>
+          </span>
         </div>
       </header>
 
       {/* Sidebar for mobile */}
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         {/* Close button */}
-        <button className="close-btn" onClick={toggleSidebar}>
+        <span className="close-btn" onClick={toggleSidebar}>
           &times;
-        </button>
+        </span>
         {/* Sidebar navigation */}
         <ul>
           <li>
-            <Link to="#home" onClick={toggleSidebar}>
+            <Link to="/" onClick={toggleSidebar}>
               Home
             </Link>
           </li>
@@ -73,26 +97,22 @@ const Header = ({ cartCount }) => {
             </Link>
           </li>
           <li>
-            <Link to="#services" onClick={toggleSidebar}>
+            <Link to="/service1" onClick={toggleSidebar}>
               Services
             </Link>
           </li>
           <li>
-            <Link to="#shop" onClick={toggleSidebar}>
+            {/* Shop link in the sidebar */}
+            <a href="/reviews1" onClick={toggleSidebar}>
               Shop
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="#contact" onClick={toggleSidebar}>
+            <Link to="/contact" onClick={toggleSidebar}>
               Contact
             </Link>
           </li>
-          <li >
-          
-          </li>
         </ul>
-
-        
       </div>
 
       {/* Overlay for mobile sidebar */}

@@ -1,10 +1,11 @@
 import React from "react";
 import { useCart } from "./CartContext"; // Use the custom hook to access cart items
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import "./CartModal.css"; // Updated styling
+import "./css/CartModal.css"; // Updated styling
 
 const CartModal = ({ onClose }) => {
-  const { cartItems, setSelectedItemForCheckout } = useCart(); // Get setSelectedItemForCheckout function
+
+  const { cartItems, setSelectedItemForCheckout, removeItem } = useCart(); // Get removeItem function from context
   const navigate = useNavigate(); // Use navigate for programmatic navigation
 
   const handleCheckout = (item) => {
@@ -12,10 +13,10 @@ const CartModal = ({ onClose }) => {
     navigate("/checkout"); // Navigate to checkout page
   };
 
-  const handleRemoveItem = (item) => {
-    // Call the removeItem function to remove an item from the cart
-    // (You would need to implement this function in the context if not already done)
+ const handleRemoveItem = (item) => {
+    removeItem(item.id); // Call removeItem to remove the item from the cart
   };
+
 
   if (cartItems.length === 0) {
     return (
