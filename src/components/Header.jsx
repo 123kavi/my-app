@@ -33,7 +33,7 @@ const Header = ({ cartCount, onNavigate }) => {
     <div>
       {/* Header */}
       <header className="header">
-      <div className="logo">
+         <div className="logo">
           <img src={logoImage} alt="ShopNow" style={{ width: 'auto', height: '40px' }} />
         </div>
         {/* Desktop navigation */}
